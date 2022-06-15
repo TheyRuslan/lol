@@ -158,6 +158,7 @@ UIS.InputBegan:Connect(function(Input, IsTyping)
 game.Workspace.Basketball.CFrame = Game.Workspace.XxXxOTIXxXx_PROxD.HumanoidRootPart.CFrame
 end
 end)
+end)
 local Button = Window:Button('Ball Mag',function() 
 game.StarterGui:SetCore("SendNotification", {
 Title = "6 Stud Ball Mag"; 
