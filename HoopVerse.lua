@@ -147,15 +147,16 @@ sound.SoundId = "rbxassetid://6098419898"
 sound.Looped = false
 sound:Play()
     print("Ball TP: On")
-game.Players.LocalPlayer:GetMouse().KeyDown:Connect(function(KeyPressed)
- if KeyPressed == "y" then
-for i,v in pairs(game:GetService("Workspace"):GetDescendants()) do
-    if v.Name == "Basketball22" then
-        v.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
-    end
+local UIS = game:GetService('UserInputService')
+local plr = game.Players.LocalPlayer
+local Char = plr.Character or plr.CharacterAded:Wait()
+local Key = 'Y'
+UIS.InputBegan:Connect(function(Input, IsTyping)
+  if IsTyping then return end
+  local KeyPressed = Input.KeyCode
+  if KeyPressed == Enum.KeyCode[Key] then
+game.Workspace.Basketball.CFrame = Game.Workspace.XxXxOTIXxXx_PROxD.HumanoidRootPart.CFrame
 end
-end
-end)
 end)
 local Button = Window:Button('Ball Mag',function() 
 game.StarterGui:SetCore("SendNotification", {
