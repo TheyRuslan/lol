@@ -1,6 +1,3 @@
-
-
-
 local a = game:HttpGet("https://aimstudio.xyz/Whitelist.php?key=Listed&user=2029614495&hwid=d7171883b4f61a887175bb1f60d9b946e556fc3468fec36426af53750dad09f4e69e080b7546d0e7603b5824750e53eb09f511fb635bdf3186d50f829557b212")
 
 
