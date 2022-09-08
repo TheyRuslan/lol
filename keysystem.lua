@@ -140,7 +140,7 @@ for i, v in pairs(plrGui:GetChildren()) do
                         Background.Visible = false
                         print("There")
                         if a == 6804602922 then -- Place ID / Game ID
-                            loadstring(game:HttpGet("https://raw.githubusercontent.com/TheyRuslan/server.cfg/main/beta%20encrypt.lua?token=GHSAT0AAAAAABX7S25QUYLP3RHJBQEDBCCMYYZYMBA"))() --Loadstring
+                            loadstring(game:HttpGet("https://raw.githubusercontent.com/TheyRuslan/server.cfg/main/beta%20encrypt.lua?token=GHSAT0AAAAAABX7S25QH4JM35NSWAN2N2VMYYZYTAA"))() --Loadstring
                             print("working")
 
                         elseif a == 4499961540 then -- Place ID / Game ID
