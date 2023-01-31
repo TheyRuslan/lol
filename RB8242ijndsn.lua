@@ -1113,6 +1113,7 @@ task.spawn(function()
         if state2 then
             if Toggles.lagswitch.Value == true then
                 while wait(0.6) do --// don't change it's the best
+                    if Toggles.lagswitch.Value == true then
                     game:GetService("NetworkClient"):SetOutgoingKBPSLimit(math.huge)
                     local function getmaxvalue(val)
                     local mainvalueifonetable = 499999
@@ -1150,6 +1151,7 @@ task.spawn(function()
                     end
             end
         end
+        end
 
         if Library.Unloaded then break end
     end
@@ -1158,7 +1160,7 @@ end)
 local speedborn = RightGroupBox2:AddToggle('speedcheese', {
     Text = 'Speed Cheese',
     Default = false,
-    Tooltip = 'Cada vez que pulses la tecla te impulsaras con velocidad\ndiminuto teleport hacia delante.' -- Information shown when you hover over the toggle
+    Tooltip = 'Cada vez que pulses la tecla te impulsaras con velocidad\ndiminuta teleport hacia delante.' -- Information shown when you hover over the toggle
 })
 
 Toggles.speedcheese:OnChanged(function()
@@ -1595,7 +1597,7 @@ Toggles.autoankles:OnChanged(function()
         
         function playerAdded(v)
             local function charadded(char)
-              local humanoid = char:WaitForChild("Humanoid", 0.01)
+              local humanoid = char:WaitForChild("Humanoid", 5)
               if humanoid then
                   humanoid.AnimationPlayed:Connect(function(track)
                       local info = animationInfo[track.Animation.AnimationId]
@@ -1606,7 +1608,7 @@ Toggles.autoankles:OnChanged(function()
                      
                       if (lp.Character and lp.Character:FindFirstChild("Head") and v.Character:FindFirstChild("Head")) then
                           local mag = (v.Character.Head.Position - lp.Character.Head.Position).Magnitude
-                          if mag < 13.31  then
+                          if mag < 15  then
                              
                               for _, animName in pairs(stealanim) do
                                   if info.Name:match(animName) then
