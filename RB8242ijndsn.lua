@@ -201,6 +201,17 @@ Toggles.standingaimbot:OnChanged(function()
         pingvalue = game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValueString()
         split = string.split(pingvalue, '(')
         ping = tonumber(split[1])
+        getgenv().ping200 = true
+        getgenv().ping195 = true
+        getgenv().ping190 = true
+        getgenv().ping185 = true
+        getgenv().ping180 = true
+        getgenv().ping175 = true
+        getgenv().ping170 = true
+        getgenv().ping165 = true
+        getgenv().ping160 = true
+        getgenv().ping155 = true
+        getgenv().ping150 = true
         getgenv().ping145 = true
         getgenv().ping140 = true
         getgenv().ping135 = true
@@ -220,16 +231,16 @@ Toggles.standingaimbot:OnChanged(function()
         getgenv().ping65 = true
         getgenv().ping60 = true
 
-        if ping > 145 then
-            print("145 ms")
-            while getgenv().ping145 == true do wait()
+        if ping > 200 then
+            print("200 ms")
+            while getgenv().ping200 == true do wait()
             --game:GetService("RunService").RenderStepped:Connect(function()
                 task.wait()
                 for _, v in pairs(Humanoid:GetPlayingAnimationTracks()) do
                     if v.Animation.AnimationId == StandingAnim then
                         if Humanoid.MoveDirection.Magnitude == 0 then
                             if Toggles.standingaimbot.Value == true then
-                            wait(0.46)
+                            wait(0.385)
                             keyrelease(0x45)
                             end
                         end
@@ -237,6 +248,182 @@ Toggles.standingaimbot:OnChanged(function()
             end
             --end)
         end
+
+    elseif ping > 195 then
+        print("195 ms")
+        --game:GetService("RunService").RenderStepped:Connect(function()
+        while getgenv().ping195 == true do wait()
+            for _, v in pairs(Humanoid:GetPlayingAnimationTracks()) do
+                if v.Animation.AnimationId == StandingAnim then
+                    if Humanoid.MoveDirection.Magnitude == 0 then
+                        wait(0.4)
+                        if Toggles.standingaimbot.Value == true then
+                        keyrelease(0x45)
+                        end
+                    end
+                    end
+                end
+            end
+
+    elseif ping > 190 then
+        print("190 ms")
+        --game:GetService("RunService").RenderStepped:Connect(function()
+        while getgenv().ping190 == true do wait()
+            for _, v in pairs(Humanoid:GetPlayingAnimationTracks()) do
+                if v.Animation.AnimationId == StandingAnim then
+                    if Humanoid.MoveDirection.Magnitude == 0 then
+                        wait(0.41)
+                        if Toggles.standingaimbot.Value == true then
+                        keyrelease(0x45)
+                        end
+                    end
+                    end
+                end
+            end
+
+    elseif ping > 185 then
+        print("185 ms")
+        --game:GetService("RunService").RenderStepped:Connect(function()
+        while getgenv().ping185 == true do wait()
+            for _, v in pairs(Humanoid:GetPlayingAnimationTracks()) do
+                if v.Animation.AnimationId == StandingAnim then
+                    if Humanoid.MoveDirection.Magnitude == 0 then
+                        wait(0.42)
+                        if Toggles.standingaimbot.Value == true then
+                        keyrelease(0x45)
+                        end
+                    end
+                    end
+                end
+            end
+
+    elseif ping > 180 then
+        print("180 ms")
+        --game:GetService("RunService").RenderStepped:Connect(function()
+        while getgenv().ping180 == true do wait()
+            for _, v in pairs(Humanoid:GetPlayingAnimationTracks()) do
+                if v.Animation.AnimationId == StandingAnim then
+                    if Humanoid.MoveDirection.Magnitude == 0 then
+                        wait(0.43)
+                        if Toggles.standingaimbot.Value == true then
+                        keyrelease(0x45)
+                        end
+                    end
+                    end
+                end
+            end
+
+    elseif ping > 175 then
+        print("175 ms")
+        --game:GetService("RunService").RenderStepped:Connect(function()
+        while getgenv().ping175 == true do wait()
+            for _, v in pairs(Humanoid:GetPlayingAnimationTracks()) do
+                if v.Animation.AnimationId == StandingAnim then
+                    if Humanoid.MoveDirection.Magnitude == 0 then
+                        wait(0.435)
+                        if Toggles.standingaimbot.Value == true then
+                        keyrelease(0x45)
+                        end
+                    end
+                    end
+                end
+            end
+
+    elseif ping > 170 then
+        print("170 ms")
+        --game:GetService("RunService").RenderStepped:Connect(function()
+        while getgenv().ping170 == true do wait()
+            for _, v in pairs(Humanoid:GetPlayingAnimationTracks()) do
+                if v.Animation.AnimationId == StandingAnim then
+                    if Humanoid.MoveDirection.Magnitude == 0 then
+                        wait(0.435)
+                        if Toggles.standingaimbot.Value == true then
+                        keyrelease(0x45)
+                        end
+                    end
+                    end
+                end
+            end
+
+    elseif ping > 165 then
+        print("165 ms")
+        --game:GetService("RunService").RenderStepped:Connect(function()
+        while getgenv().ping165 == true do wait()
+            for _, v in pairs(Humanoid:GetPlayingAnimationTracks()) do
+                if v.Animation.AnimationId == StandingAnim then
+                    if Humanoid.MoveDirection.Magnitude == 0 then
+                        wait(0.44)
+                        if Toggles.standingaimbot.Value == true then
+                        keyrelease(0x45)
+                        end
+                    end
+                    end
+                end
+            end
+
+    elseif ping > 160 then
+        print("160 ms")
+        --game:GetService("RunService").RenderStepped:Connect(function()
+        while getgenv().ping160 == true do wait()
+            for _, v in pairs(Humanoid:GetPlayingAnimationTracks()) do
+                if v.Animation.AnimationId == StandingAnim then
+                    if Humanoid.MoveDirection.Magnitude == 0 then
+                        wait(0.44)
+                        if Toggles.standingaimbot.Value == true then
+                        keyrelease(0x45)
+                        end
+                    end
+                    end
+                end
+            end
+
+    elseif ping > 155 then
+        print("155 ms")
+        --game:GetService("RunService").RenderStepped:Connect(function()
+        while getgenv().ping155 == true do wait()
+            for _, v in pairs(Humanoid:GetPlayingAnimationTracks()) do
+                if v.Animation.AnimationId == StandingAnim then
+                    if Humanoid.MoveDirection.Magnitude == 0 then
+                        wait(0.45)
+                        if Toggles.standingaimbot.Value == true then
+                        keyrelease(0x45)
+                        end
+                    end
+                    end
+                end
+            end
+
+    elseif ping > 150 then
+        print("150 ms")
+        --game:GetService("RunService").RenderStepped:Connect(function()
+        while getgenv().ping145 == true do wait()
+            for _, v in pairs(Humanoid:GetPlayingAnimationTracks()) do
+                if v.Animation.AnimationId == StandingAnim then
+                    if Humanoid.MoveDirection.Magnitude == 0 then
+                        wait(0.45)
+                        if Toggles.standingaimbot.Value == true then
+                        keyrelease(0x45)
+                        end
+                    end
+                    end
+                end
+            end
+
+    elseif ping > 145 then
+        print("145 ms")
+        --game:GetService("RunService").RenderStepped:Connect(function()
+        while getgenv().ping145 == true do wait()
+            for _, v in pairs(Humanoid:GetPlayingAnimationTracks()) do
+                if v.Animation.AnimationId == StandingAnim then
+                    if Humanoid.MoveDirection.Magnitude == 0 then
+                        wait(0.46)
+                        if Toggles.standingaimbot.Value == true then
+                        keyrelease(0x45)
+                        end
+                    end
+                    end
+                end
+            end
 
     elseif ping > 140 then
         print("140 ms")
@@ -537,6 +724,17 @@ Toggles.standingaimbot:OnChanged(function()
     end
     if Toggles.standingaimbot.Value == false then
         local ping = nil
+        getgenv().ping200 = false
+        getgenv().ping195 = false
+        getgenv().ping190 = false
+        getgenv().ping185 = false
+        getgenv().ping180 = false
+        getgenv().ping175 = false
+        getgenv().ping170 = false
+        getgenv().ping165 = false
+        getgenv().ping160 = false
+        getgenv().ping155 = false
+        getgenv().ping150 = false
         getgenv().ping145 = false
         getgenv().ping140 = false
         getgenv().ping135 = false
