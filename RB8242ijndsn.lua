@@ -185,9 +185,9 @@ Toggles.ballmagnet:SetValue(false)
 
 
 LeftGroupBox:AddToggle('standingaimbot', {
-    Text = 'Standing Shoot',
+    Text = 'Aimbot Auto',
     Default = false,
-    Tooltip = 'Con esto si presionas la [E] solamente en un tiro de pie.\nUsar si tu ping es estable ya que este script\ndetecta tu ping para timear dependiendo tu ping. [AUTO-PING-TIMING]' -- Information shown when you hover over the toggle
+    Tooltip = 'Con esto si presionas la [E] solamente en un tiro de pie.\nUsar si tu ping es estable ya que este script\ndetecta tu ping para timear dependiendo tu ping.\nDisponibles: [STANDING SHOOT] [HOPSTEP-OFFDRIBLE]' -- Information shown when you hover over the toggle
 })
 
 Toggles.standingaimbot:OnChanged(function()
