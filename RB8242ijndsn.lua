@@ -2512,27 +2512,4 @@ SaveManager:BuildConfigSection(Tabs['UI Settings'])
 ThemeManager:ApplyToTab(Tabs['UI Settings'])
 
 
-wait(200)
-
-local sound = Instance.new("Sound", game.Workspace)
-sound.Volume = 70
-sound.SoundId = "rbxassetid://1402068429" 
-sound.Looped = false
-sound:Play()
-
-wait(180)
-
-local sound = Instance.new("Sound", game.Workspace)
-sound.Volume = 80
-sound.SoundId = "rbxassetid://9114038441" 
-sound.Looped = false
-sound:Play()
-
-wait(235)
-
-local sound = Instance.new("Sound", game.Workspace)
-sound.Volume = 100
-sound.SoundId = "rbxassetid://5113630674" 
-sound.Looped = false
-sound:Play()
 
