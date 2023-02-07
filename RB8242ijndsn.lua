@@ -1640,13 +1640,11 @@ Toggles.autoblock:OnChanged(function()
         
         
         function block(player)
-            if Toggles.autoblock.Value == true then
             vim:SendKeyEvent(true, 304, false, game)
             local A_1 = "Jump"
             local Event = game:GetService("ReplicatedStorage").GameEvents.ClientAction
             Event:FireServer(A_1)
             vim:SendKeyEvent(false, 304, false, game)
-            end
         
         end
         
@@ -1667,7 +1665,7 @@ Toggles.autoblock:OnChanged(function()
                      
                       if (lp.Character and lp.Character:FindFirstChild("Head") and v.Character:FindFirstChild("Head")) then
                           local mag = (v.Character.Head.Position - lp.Character.Head.Position).Magnitude
-                          if mag < 9.5 then
+                          if mag < 12 then
                              
                               for _, animName in pairs(AnimNames) do
                                   if info.Name:match(animName) then
