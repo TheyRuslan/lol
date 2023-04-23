@@ -1,4 +1,3 @@
-
 local HWIDTable = loadstring(game:HttpGet(("https://pastebin.com/raw/K0rPtrnA"), true))()
 
 local HWID = game:GetService("RbxAnalyticsService"):GetClientId()
@@ -117,6 +116,11 @@ for i, v in pairs(HWIDTable) do
             game:GetService("Workspace").Gym.Lights.Parent = game.Workspace
         end)
         
+        pcall(function()
+            game:GetService("Workspace").Building["Hang Lights"].Parent = game.Workspace
+            game:GetService("Workspace").Building["Out Lights"].Parent = game.Workspace
+        end)
+        
         local LeftGroupBox = Tabs.Main:AddLeftGroupbox('$$ New Scripts $$')
         
         LeftGroupBox:AddLabel('😈 Anarchy Scripts 😈')
@@ -162,7 +166,7 @@ for i, v in pairs(HWIDTable) do
         
         Toggles.ballmagnet:SetValue(false)
         
-
+        
         
         LeftGroupBox:AddToggle('visionbooster', {
             Text = 'Vision Booster',
@@ -2838,7 +2842,7 @@ for i, v in pairs(HWIDTable) do
         
         
         local RightGroupBox = Tabs.Main:AddRightGroupbox('$$ Speed Options $$')
-
+        
         RightGroupBox:AddToggle('glidebooster', {
             Text = 'Glide Walk',
             Default = false,
@@ -2847,9 +2851,9 @@ for i, v in pairs(HWIDTable) do
         
         Toggles.glidebooster:OnChanged(function()
             if Toggles.glidebooster.Value == true then
-
-
-            
+                
+                
+                
                 
                 You = game.Players.LocalPlayer.Name
                 UIS = game:GetService("UserInputService")
@@ -2883,7 +2887,7 @@ for i, v in pairs(HWIDTable) do
             
             Default = 0.3,
             Min = 0,
-            Max = 0.078,
+            Max = 0.09,
             Rounding = 3,
             
             Compact = true,
@@ -2891,21 +2895,21 @@ for i, v in pairs(HWIDTable) do
         
         local Number = Options.glideslider.Value
         Options.glideslider:OnChanged(function()
-        end)
+            end)
         
         Options.glideslider:SetValue(0.06)
-
+        
         local teleportsbox = Tabs.Main:AddLeftGroupbox('     $$ Teleports Options $$')
-
+        
         local MyButton = teleportsbox:AddButton('Personal Gym', function()
-
-            local A_1 = "Plaza"
-            local Event = game:GetService("ReplicatedStorage").Remotes.Teleport
-            Event:InvokeServer(A_1)
-
-            local A_1 = "Personal Gym"
-            local Event = game:GetService("ReplicatedStorage").Remotes.Teleport
-            Event:InvokeServer(A_1)
+                
+                local A_1 = "Plaza"
+                local Event = game:GetService("ReplicatedStorage").Remotes.Teleport
+                Event:InvokeServer(A_1)
+                
+                local A_1 = "Personal Gym"
+                local Event = game:GetService("ReplicatedStorage").Remotes.Teleport
+                Event:InvokeServer(A_1)
         end)
         
         local MyButton2 = MyButton:AddButton('Practice', function()
@@ -2940,66 +2944,65 @@ for i, v in pairs(HWIDTable) do
             local Event = game:GetService("ReplicatedStorage").Remotes.Teleport
             Event:InvokeServer(A_1)
         end)
-
+        
         local creditsbox = Tabs.Main:AddLeftGroupbox('         $$ Credits $$')
-
+        
         creditsbox:AddLabel('<font color="#3da5ff">TheyRuslan#5657</font> - scripter')
-        creditsbox:AddLabel('<font color="#de6cff">zldrako#5505</font> - contributor VeryGay')
-
+        creditsbox:AddLabel('<font color="#de6cff">zldrako#5505</font> - contributor')
+        
         --[[
         
         RightGroupBox:AddToggle('walikingrunning', {
-            Text = 'Walking/Running Speed',
-            Default = false,
-            Tooltip = 'Dont enable this yet (DETECTED U CAN GET BANNED)' -- Information shown when you hover over the toggle
+        Text = 'Walking/Running Speed',
+        Default = false,
+        Tooltip = 'Dont enable this yet (DETECTED U CAN GET BANNED)' -- Information shown when you hover over the toggle
         })
         
         local youareapussy = game.Players.LocalPlayer.Character.Humanoid:GetAttributes()
         
         for i, v in pairs(youareapussy) do
-            if i == "NormalSpeed" then
-                DefaultNormalSpeed = v
-            end
+        if i == "NormalSpeed" then
+        DefaultNormalSpeed = v
+        end
         end
         
         Toggles.walikingrunning:OnChanged(function()
-            if Toggles.walikingrunning.Value == true then
-                local gmt = getrawmetatable(game)
-                setreadonly(gmt, false)
-                local oldindex = gmt.__index
-                gmt.__index = newclosure(function(self, b)
-                    if b == "NormalSpeed" then
-                        return DefaultNormalSpeed
-                    end
-                    return oldindex(self, b)
-                end)
-                
-                game.Players.LocalPlayer.Character.Humanoid:SetAttribute('NormalSpeed', DefaultNormalSpeed + Options.speednormalwalkingslider.Value)
-            end
-            if Toggles.walikingrunning.Value == false then
-                game.Players.LocalPlayer.Character.Humanoid:SetAttribute('NormalSpeed', DefaultNormalSpeed)
-            end
+        if Toggles.walikingrunning.Value == true then
+        local gmt = getrawmetatable(game)
+        setreadonly(gmt, false)
+        local oldindex = gmt.__index
+        gmt.__index = newclosure(function(self, b)
+        if b == "NormalSpeed" then
+        return DefaultNormalSpeed
+        end
+        return oldindex(self, b)
+        end)
+        
+        game.Players.LocalPlayer.Character.Humanoid:SetAttribute('NormalSpeed', DefaultNormalSpeed + Options.speednormalwalkingslider.Value)
+        end
+        if Toggles.walikingrunning.Value == false then
+        game.Players.LocalPlayer.Character.Humanoid:SetAttribute('NormalSpeed', DefaultNormalSpeed)
+        end
         end)
         Toggles.walikingrunning:SetValue(false)
         
         RightGroupBox:AddSlider('speednormalwalkingslider', {
-            Text = '',
-            Default = 0.4,
-            Min = 0,
-            Max = 0.2,
-            Rounding = 3,
-            Compact = true,
+        Text = '',
+        Default = 0.4,
+        Min = 0,
+        Max = 0.2,
+        Rounding = 3,
+        Compact = true,
         })
         
         local Number = Options.speednormalwalkingslider.Value
         Options.speednormalwalkingslider:OnChanged(function()
-            
-            end)
+        
+        end)
         
         Options.speednormalwalkingslider:SetValue(0.05)
-
-        --]]
         
+        --]]
         local LeftGroupFPS = Tabs.Second:AddLeftGroupbox('$$ FPS Options $$')
         
         LeftGroupFPS:AddToggle('clearmap', {
@@ -3031,6 +3034,9 @@ for i, v in pairs(HWIDTable) do
                 end
                 
                 if game.PlaceId == 10240522770 then -- Rec Game
+                    pcall(function()
+                        game:GetService("Workspace").Building.Parent = game:GetService("ReplicatedStorage")
+                    end)
                     pcall(function()
                         game:GetService("Workspace").Gym.Parent = game:GetService("ReplicatedStorage")
                     end)
@@ -3244,7 +3250,7 @@ for i, v in pairs(HWIDTable) do
             end
         end)
         Toggles.fpsbooster9:SetValue(false)
-
+        
         local RightGroupFPS = Tabs.Second:AddRightGroupbox('$$ FPS Players Options $$ 🚬🚬')
         
         RightGroupFPS:AddToggle('fpsbooster10', {
@@ -3272,7 +3278,7 @@ for i, v in pairs(HWIDTable) do
             end
         end)
         Toggles.fpsbooster10:SetValue(false)
-
+        
         RightGroupFPS:AddToggle('unloadallplayers', {
             Text = 'Unload All Players',
             Default = false,
@@ -3309,7 +3315,7 @@ for i, v in pairs(HWIDTable) do
         
         Toggles.unloadfarplayers:OnChanged(function()
             if Toggles.unloadfarplayers.Value == true then
-        
+                
                 if Toggles.unloadfarplayers.Value == true then
                     while Toggles.unloadfarplayers.Value == true do
                         if Toggles.unloadfarplayers.Value == true then
@@ -3326,34 +3332,34 @@ for i, v in pairs(HWIDTable) do
                                         wait(0)
                                         if Toggles.unloadfarplayers.Value == true then
                                             if v.Character then
-                                        local character = v.Character or v.CharacterAdded:Wait()
-                                        local plrhumanoid
-                                        plrhumanoid = v.Character:WaitForChild("HumanoidRootPart")
-                                        v.Character.Parent = game:GetService("ReplicatedStorage")
-                                        --repeat wait() until v.Character
+                                                local character = v.Character or v.CharacterAdded:Wait()
+                                                local plrhumanoid
+                                                plrhumanoid = v.Character:WaitForChild("HumanoidRootPart")
+                                                v.Character.Parent = game:GetService("ReplicatedStorage")
+                                            --repeat wait() until v.Character
                                             end
                                         end
                                     end
                                 end
                             end
-                            end
+                        end
+                    end
                 end
-                end
-    
-
-        
+            
+            
+            
             end
             if Toggles.unloadfarplayers.Value == false then
                 for i, v in pairs(game.ReplicatedStorage:GetChildren()) do
                     v.Parent = game:GetService("Workspace")
                 end
-                
+            
             end
         end)
         
         Toggles.unloadfarplayers:SetValue(false)
         
-
+        
         RightGroupFPS:AddSlider('firstdiscancefpsultimate', {
             Text = 'Distance #1',
             Default = 180,
@@ -3365,7 +3371,7 @@ for i, v in pairs(HWIDTable) do
         
         local Number = Options.firstdiscancefpsultimate.Value
         Options.firstdiscancefpsultimate:OnChanged(function()
-        end)
+            end)
         
         Options.firstdiscancefpsultimate:SetValue(123)
         
