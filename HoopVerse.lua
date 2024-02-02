@@ -171,3 +171,10 @@ CrossHairX.Visible = true
 CrossHairX.Filled = true
 CrossHairX.Radius = 3
 CrossHairX.Color = Color3.fromRGB(144, 66, 245)
+    local NotificationHolder = loadstring(game:HttpGet("https://raw.githubusercontent.com/BocusLuke/UI/main/STX/Module.Lua"))()
+    local Notification = loadstring(game:HttpGet("https://raw.githubusercontent.com/BocusLuke/UI/main/STX/Client.Lua"))()
+
+    Notification:Notify(
+    {Title = "Hitbox Extender Added [✅]", Description = "Ruslan Baby (LOADED) 🔥"},
+    {OutlineColor = Color3.fromRGB(80, 80, 80),Time = 5, Type = "default"}
+    )
