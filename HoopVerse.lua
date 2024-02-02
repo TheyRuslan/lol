@@ -1,253 +1,173 @@
+--// Trident [Mobile]
 
-local sound = Instance.new("Sound", game.Workspace)
-sound.Volume = 5
-sound.SoundId = "rbxassetid://8697636436" 
-sound.Looped = false
-sound:Play()
+local Camera = game:GetService("Workspace").CurrentCamera
+local CharcaterMiddle = game:GetService("Workspace").Ignore.LocalCharacter.Middle
 
-local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/TheAbsolutionism/Wally-GUI-Library-V2-Remastered/main/Library%20Code", true))()
+-------
 
-library.options.underlinecolor = 'rainbow' 
-library.options.toggledisplay = 'Check'
+--// Tables
+local Functions = {}
+local Esp = {Settings={
+    Boxes=false,BoxesColor=Color3.fromRGB(144, 66, 245),
+    Sleeping=false,SleepingColor=Color3.fromRGB(255,255,255),
+    Distances=false,DistanceColor=Color3.fromRGB(255,255,255),
+    Armour=false,ArmourColor=Color3.fromRGB(255,255,255),
+    Tool=false,ToolColor=Color3.fromRGB(255,255,255),
+    ViewAngle=true,ViewAngleColor=Color3.fromRGB(144, 66, 245),ViewAngleThickness=1,ViewAngleTransparrency=1,
+    TextFont=2,TextOutline=true,TextSize=13,RenderDistance=1000,TeamCheck=false,TargetSleepers=true,MinTextSize=11
+},Drawings={},Connections={},Players={}}
+local Fonts = {["UI"]=0,["System"]=1,["Plex"]=2,["Monospace"]=3}
+local cache = {}
 
-local Window = library:CreateWindow('HOOP VERSE') 
-local Label = Window:Label('Owner TheyRuslan',(nil))
-
-local Section = Window:Section('Court',(true))
-local Button = Window:Button("Aimbot", function()
-    game.StarterGui:SetCore("SendNotification", {
-Title = "Aimbot"; 
-Text = "You Need Join AimStudio roblox group for work.";
-})
-local sound = Instance.new("Sound", game.Workspace)
-sound.Volume = 5
-sound.SoundId = "rbxassetid://6098419898" 
-sound.Looped = false
-sound:Play()
-wait(0)
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Loompic/HoopVerse/main/Aimbot"))()
-
-end)
-local Button = Window:Button('Infinite Stamina',function() 
-    game.StarterGui:SetCore("SendNotification", {
-    Title = "Auto Sprint"; 
-    Text = "Enabled";
-    })
-    local sound = Instance.new("Sound", game.Workspace)
-    sound.Volume = 5
-    sound.SoundId = "rbxassetid://6098419898" 
-    sound.Looped = false
-    sound:Play()
-    local Players = game:GetService("Players")
-    local player = Players.LocalPlayer
-    local character = player.Character
-    
-    print("INFINITE STAMINA")
-    while true do
-    wait(0.1)
-    game.Players.LocalPlayer.Character.Stamina.Value = 100
+--// Functions
+function Functions:IsSleeping(Model)
+    if Model and Model:FindFirstChild("AnimationController") and Model.AnimationController:FindFirstChild("Animator") then
+		for i,v in pairs(Model.AnimationController.Animator:GetPlayingAnimationTracks()) do
+            if v.Animation.AnimationId == "rbxassetid://13280887764" then return true
+            else return false
+            end
+        end
     end
-    end)
-    local Button = Window:Button('Reach Arms',function() 
-        game.StarterGui:SetCore("SendNotification", {
-        Title = "Reach Arms"; 
-        Text = "Enabled";
-        })
-        local sound = Instance.new("Sound", game.Workspace)
-        sound.Volume = 5
-        sound.SoundId = "rbxassetid://6098419898" 
-        sound.Looped = false
-        sound:Play()
-        
-        game.Players.LocalPlayer.Character.RightUpperArm.Size = Vector3.new(20.5,4.5,2.5)
-        game.Players.LocalPlayer.Character.LeftUpperArm.Size = Vector3.new(20.5,4.5,2.5)
-        game.Players.LocalPlayer.Character.RightHand.Size = Vector3.new(20.5,4.5,2.5)
-        game.Players.LocalPlayer.Character.LeftHand.Size = Vector3.new(20.5,4.5,2.5)
-        game.Players.LocalPlayer.Character.RightLowerArm.Size = Vector3.new(20.5,4.5,2.5)
-        game.Players.LocalPlayer.Character.LeftLowerArm.Size = Vector3.new(20.5,4.5,2.5)
-        
-        game.Players.LocalPlayer.Character.RightUpperArm.Transparency = 0.7
-        game.Players.LocalPlayer.Character.LeftUpperArm.Transparency = 0.7
-        game.Players.LocalPlayer.Character.RightHand.Transparency = 0.7
-        game.Players.LocalPlayer.Character.LeftHand.Transparency = 0.7
-        game.Players.LocalPlayer.Character.RightLowerArm.Transparency = 0.7
-        game.Players.LocalPlayer.Character.LeftLowerArm.Transparency = 0.7
-        end)
-
-        local Button = Window:Button('Normal Arms',function() 
-            game.StarterGui:SetCore("SendNotification", {
-            Title = "Normal Arms"; 
-            Text = "Enabled";
-            })
-            local sound = Instance.new("Sound", game.Workspace)
-            sound.Volume = 5
-            sound.SoundId = "rbxassetid://6098419898" 
-            sound.Looped = false
-            sound:Play()
-            
-            game.Players.LocalPlayer.Character.RightUpperArm.Size = Vector3.new(0.8,0.8,0.8)
-            game.Players.LocalPlayer.Character.LeftUpperArm.Size = Vector3.new(0.8,0.8,0.8)
-            game.Players.LocalPlayer.Character.RightHand.Size = Vector3.new(1,1,0.8)
-            game.Players.LocalPlayer.Character.LeftHand.Size = Vector3.new(1,1,0.8)
-            game.Players.LocalPlayer.Character.RightLowerArm.Size = Vector3.new(0.8,0.8,0.8)
-            game.Players.LocalPlayer.Character.LeftLowerArm.Size = Vector3.new(0.8,0.8,0.8)
-            
-            game.Players.LocalPlayer.Character.RightUpperArm.Transparency = 0
-            game.Players.LocalPlayer.Character.LeftUpperArm.Transparency = 0
-            game.Players.LocalPlayer.Character.RightHand.Transparency = 0
-            game.Players.LocalPlayer.Character.LeftHand.Transparency = 0
-            game.Players.LocalPlayer.Character.RightLowerArm.Transparency = 0
-            game.Players.LocalPlayer.Character.LeftLowerArm.Transparency = 0
-            end)
-    local Button = Window:Button('Shift Click TP',function() 
-        game.StarterGui:SetCore("SendNotification", {
-        Title = "Shift Click TP"; 
-        Text = "Enabled";
-        })
-        local sound = Instance.new("Sound", game.Workspace)
-        sound.Volume = 5
-        sound.SoundId = "rbxassetid://6098419898" 
-        sound.Looped = false
-        sound:Play()
-            print("Shift Click TP: On")
-        local player = game:GetService("Players").LocalPlayer
-        local char = player.Character
-        local mouse = player:GetMouse()
-        local uis = game:GetService("UserInputService")
-        
-        local shifthold  = false
-        
-        mouse.Button1Down:Connect(function()
-            if shifthold then
-                char:MoveTo(mouse.Hit.p)
+end
+function Functions:Draw(Type,Propities)
+    if not Type and not Propities then return end
+    local drawing = Drawing.new(Type)
+    for i,v in pairs(Propities) do drawing[i] = v end
+    table.insert(Esp.Drawings,drawing)
+    return drawing
+end
+function Esp:CreateEsp(PlayerTable)
+    if not PlayerTable then return end
+    local drawings = {}
+    drawings.Box = Functions:Draw("Square",{Transparency=0.35,Color=Esp.Settings.BoxesColor,Visible=false,Visible=false});
+    drawings.Sleeping = Functions:Draw("Text",{Text = "Nil",Font=Esp.Settings.TextFont,Size=Esp.Settings.TextSize,Center=true,Outline=Esp.Settings.TextOutline,Color = Esp.Settings.SleepingColor,ZIndex = 2,Visible=false})
+    drawings.Distance = Functions:Draw("Text",{Text = "Nil",Font=Esp.Settings.TextFont,Size=Esp.Settings.TextSize,Center=true,Outline=Esp.Settings.TextOutline,Color = Esp.Settings.SleepingColor,ZIndex = 2,Visible=false})
+    drawings.Armour = Functions:Draw("Text",{Text = "None",Font=Esp.Settings.TextFont,Size=Esp.Settings.TextSize,Center=false,Outline=Esp.Settings.TextOutline,Color = Esp.Settings.ArmourColor,ZIndex = 2,Visible=false})
+    drawings.ViewAngle = Functions:Draw("Line",{Thickness=Esp.Settings.ViewAngleThickness,Transparency=Esp.Settings.ViewAngleTransparrency,Color=Esp.Settings.ViewAngleColor,ZIndex=2,Visible=false})
+    drawings.PlayerTable = PlayerTable
+    Esp.Players[PlayerTable.model] = drawings
+end
+function Esp:RemoveEsp(PlayerTable)
+    if not PlayerTable and PlayerTable.model ~= nil then return end
+    esp = Esp.Players[PlayerTable.model];
+    if not esp then return end
+    for i, v in pairs(esp) do
+        if not type(v) == "table" then v:Remove(); end
+    end
+    Esp.Players[PlayerTable.model] = nil;
+end
+function Esp:UpdateEsp()
+    for i,v in pairs(Esp.Players) do
+        local Character = i
+        local Position,OnScreen = Camera:WorldToViewportPoint(Character:GetPivot().Position);
+        local scale = 1 / (Position.Z * math.tan(math.rad(Camera.FieldOfView * 0.5)) * 2) * 100;
+        local w,h = math.floor(32 * scale), math.floor(60 * scale);
+        local x,y = math.floor(Position.X), math.floor(Position.Y);
+        local Distance = (CharcaterMiddle:GetPivot().Position-Character:GetPivot().Position).Magnitude
+        local BoxPosX,BoxPosY = math.floor(x - w * 0.5),math.floor(y - h * 0.5)
+        local offsetCFrame = CFrame.new(0, 0, -4)
+        local sleeping = Functions:IsSleeping(Character)
+        if Character and Character:FindFirstChild("HumanoidRootPart") and Character:FindFirstChild("Head") then
+            local TeamTag = Character.Head.Teamtag.Enabled
+            if OnScreen == true and Esp.Settings.Boxes == true and Distance <= Esp.Settings.RenderDistance then
+                if Esp.Settings.TeamCheck == true and TeamTag == false then 
+                    v.Box.Visible = true
+                elseif Esp.Settings.TeamCheck == true and TeamTag == true then
+                    v.Box.Visible = false
+                else
+                    v.Box.Visible = true
+                end
+                if Esp.Settings.TargetSleepers == true and sleeping == true then
+                    v.Box.Visible = false
+                end
+                v.Box.Position = Vector2.new(BoxPosX,BoxPosY);v.Box.Size = Vector2.new(w,h)
+                v.Box.Color = Esp.Settings.BoxesColor
+            else
+                v.Box.Visible = false
             end
-        end)
-        
-        uis.InputBegan:Connect(function(input, process)
-            if input.KeyCode == Enum.KeyCode.LeftShift or input.KeyCode == Enum.KeyCode.RightShift then
-                shifthold = true
+            if OnScreen == true and Esp.Settings.ViewAngle == true and Distance <= Esp.Settings.RenderDistance then
+                if Esp.Settings.TeamCheck == true and TeamTag == false then v.ViewAngle.Visible = true elseif Esp.Settings.TeamCheck == true and TeamTag == true then v.ViewAngle.Visible = false else v.ViewAngle.Visible = true end
+                if Esp.Settings.TargetSleepers == true and sleeping == true then v.ViewAngle.Visible = false end
+                v.ViewAngle.Color = Esp.Settings.ViewAngleColor;v.ViewAngle.Thickness=Esp.Settings.ViewAngleThickness;v.Transparency=Esp.Settings.ViewAngleTransparrency;
+                local headpos = Camera:WorldToViewportPoint(Character.Head.Position)
+                local offsetCFrame = CFrame.new(0, 0, -4)
+                v.ViewAngle.From = Vector2.new(headpos.X, headpos.Y)
+                local value = math.clamp(1/Distance*100, 0.1, 1)
+                local dir = Character.Head.CFrame:ToWorldSpace(offsetCFrame)
+                offsetCFrame = offsetCFrame * CFrame.new(0, 0, 0.4)
+                local dirpos = Camera:WorldToViewportPoint(Vector3.new(dir.X, dir.Y, dir.Z))
+                if OnScreen == true then
+                    v.ViewAngle.To = Vector2.new(dirpos.X, dirpos.Y)
+                    offsetCFrame = CFrame.new(0, 0, -4)
+                end
+            else
+                v.ViewAngle.Visible = false
             end
-        end)
-        
-        uis.InputEnded:Connect(function(input, process)
-            if input.KeyCode == Enum.KeyCode.LeftShift or input.KeyCode == Enum.KeyCode.RightShift then
-                shifthold = false
-            end
-        end)
-        end)
-local Section = Window:Section('Player',(true))
-local Button = Window:Button('Ball TP',function() 
-game.StarterGui:SetCore("SendNotification", {
-Title = "Press Y to TP Ball"; 
-Text = "Enabled";
-})
-local sound = Instance.new("Sound", game.Workspace)
-sound.Volume = 5
-sound.SoundId = "rbxassetid://6098419898" 
-sound.Looped = false
-sound:Play()
-    print("Ball TP: On")
-local UIS = game:GetService('UserInputService')
-local plr = game.Players.LocalPlayer
-local Char = plr.Character or plr.CharacterAded:Wait()
-local Key = 'Y'
-UIS.InputBegan:Connect(function(Input, IsTyping)
-  if IsTyping then return end
-  local KeyPressed = Input.KeyCode
-  if KeyPressed == Enum.KeyCode[Key] then
-game.Workspace.Basketball.CFrame = Game.Workspace.XxXxOTIXxXx_PROxD.HumanoidRootPart.CFrame
+        else
+            v.Box.Visible=false;v.Armour.Visible=false;v.Distance.Visible=false;v.ViewAngle.Visible=false;v.Sleeping.Visible=false;
+        end
+    end
 end
+local PlayerUpdater = game:GetService("RunService").RenderStepped
+local PlayerConnection = PlayerUpdater:Connect(function()
+    Esp:UpdateEsp()
 end)
-end)
-local Button = Window:Button('Ball Mag',function() 
-game.StarterGui:SetCore("SendNotification", {
-Title = "6 Stud Ball Mag"; 
-Text = "Enabled";
-})
-local sound = Instance.new("Sound", game.Workspace)
-sound.Volume = 5
-sound.SoundId = "rbxassetid://6098419898" 
-sound.Looped = false
-sound:Play()
-    print("Ball Mag: On")
-    local Players = game:GetService("Players")
-local player = Players.LocalPlayer
-local character = player.Character
-game:GetService("Workspace")character.Hitbox.Size = Vector3.new(6.5,6.5,6.5)
-while true do
-wait(0.5)
-for _, v in pairs (game.workspace:GetDescendants())do
-if v.Name == 'Basketball' then 
-v.Size = Vector3.new(6.5,6.5,6.5)
+for i,v in pairs(workspace:GetChildren()) do
+	if v:FindFirstChild("HumanoidRootPart") then
+        table.insert(cache,v)
+        Esp:CreateEsp({model=v})
+	end
 end
-end
-for _, v in pairs (game.workspace:GetDescendants())do
-if v.Name == 'Basketball' then 
-v.Shape = Enum.PartType.Block
-end
-end
-end
-end)
-local Button = Window:Button('Camera No Limit',function() 
-game.StarterGui:SetCore("SendNotification", {
-Title = "Stamina"; 
-Text = "Enabled";
-})
-local sound = Instance.new("Sound", game.Workspace)
-sound.Volume = 5
-sound.SoundId = "rbxassetid://6098419898" 
-sound.Looped = false
-sound:Play()
-    print("Camera No Limit: On")
-local Players = game:GetService("Players")
-local player = Players.LocalPlayer
-local character = player.Character
-
-
-while true do
-game.Players.LocalPlayer.CameraMaxZoomDistance = 1000
-wait(0.5)
-end
-end)
-local Button = Window:Button('"B" Super Jump',function() 
-game.StarterGui:SetCore("SendNotification", {
-Title = "Press B"; 
-Text = "Enabled";
-})
-local sound = Instance.new("Sound", game.Workspace)
-sound.Volume = 5
-sound.SoundId = "rbxassetid://6098419898" 
-sound.Looped = false
-sound:Play()
-game.Players.LocalPlayer:GetMouse().KeyDown:Connect(function(KeyPressed)
- if KeyPressed == "b" then -- you can change the button 
-game.Players.LocalPlayer.Character.Humanoid.HipHeight = 8
-wait(0.001)
-game.Players.LocalPlayer.Character.Humanoid.HipHeight = 2.5
-end
-end)
-end)
-local Slider = Window:Slider('Speed',{ 
-['default'] = 16; 
-['min'] = 13.5; 
-['max'] = 60;
-['precise'] = (true or false); 
-['flag'] = 'speed'; 
-['location'] = {}; 
-},function(Value)
-_G.WS = (Value);
-local Humanoid = game:GetService("Players").LocalPlayer.Character.Humanoid;
-Humanoid:GetPropertyChangedSignal("WalkSpeed"):Connect(function()
-Humanoid.WalkSpeed = _G.WS;
-end)
-Humanoid.WalkSpeed = _G.WS;
+game:GetService("Workspace").ChildAdded:Connect(function(child)
+    if child:FindFirstChild("HumanoidRootPart") and not table.find(cache,child) then
+        table.insert(cache,child)
+        Esp:CreateEsp({model=child})
+    end
 end)
 
-    local Section = Window:Section('Teleport Options',(true))
-    local Button = Window:Button('¡REJOIN!',function()
-        local tpservice= game:GetService("TeleportService")
-local plr = game.Players.LocalPlayer
+-------
 
-tpservice:Teleport(game.PlaceId, plr)
-    end)
-local Section = Window:Section('TheyRuslan#0001',(true))
+game:GetService("SoundService").PlayerHitHeadshot.EqualizerSoundEffect.HighGain = -1.5
+game:GetService("SoundService").PlayerHitHeadshot.SoundId =  "rbxassetid://8726881116"
+
+-------
+
+local antihitbox
+antihitbox = hookmetamethod(game, "__newindex", newcclosure(function(...)
+local self, k = ...
+if not checkcaller() and k == "Size" and self.Name == "Head" then
+  return Vector3.new(1.672248125076294, 0.835624098777771, 0.835624098777771)
+end
+return antihitbox(...)
+end))
+
+local HitboxExpander = {HitBX = 7.5,HitBY = 7.5,HitBZ = 7.5,}
+for v, i in pairs(workspace:GetChildren()) do
+  if i:FindFirstChild("HumanoidRootPart") then
+    i.Head.Size = Vector3.new(HitboxExpander.HitBX, HitboxExpander.HitBY, HitboxExpander.HitBZ)
+    i.Head.CanCollide = false
+    i.Head.Color = Color3.fromRGB(144, 66, 245)
+    i.Head.Material = "ForceField"
+  end
+end
+game.ReplicatedStorage.Player.Head.Size = Vector3.new(HitboxExpander.HitBX, HitboxExpander.HitBY, HitboxExpander.HitBZ)
+
+-------
+
+local function setArmProperties(property, value)
+local armParts = {"LeftUpperArm", "LeftLowerArm", "LeftHand","RightUpperArm", "RightLowerArm", "RightHand"}
+for _, partName in ipairs(armParts) do game:GetService("Workspace").Ignore.FPSArms[partName][property] = value end
+end
+setArmProperties("Color", Color3.fromRGB(144, 66, 245)) setArmProperties("Material", "ForceField") setArmProperties("TextureID", "rbxassetid://9305457875")
+
+-------
+
+local CrossHairX = Drawing.new("Circle")
+--
+CrossHairX.Position = Vector2.new(Camera.ViewportSize.X / 2, Camera.ViewportSize.Y / 2)
+CrossHairX.Thickness = 1
+CrossHairX.ZIndex = 3
+CrossHairX.Visible = true
+CrossHairX.Filled = true
+CrossHairX.Radius = 3
+CrossHairX.Color = Color3.fromRGB(144, 66, 245)
